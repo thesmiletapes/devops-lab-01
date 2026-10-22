@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  web-app:
+    build: .
+    image: devops-lab-app:v1
+    container_name: my-go-service
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - APP_ENV=virtualbox-docker-production
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 128M
+
